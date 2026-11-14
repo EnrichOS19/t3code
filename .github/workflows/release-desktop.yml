@@ -481,6 +481,8 @@ jobs:
         if: inputs.cli_archive && inputs.platform != 'mac'
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
         with:
+          retention-days: 7
+        with:
           name: cli-${{ inputs.platform }}-${{ inputs.arch }}
           path: release-cli/*
           if-no-files-found: error
@@ -682,6 +684,8 @@ jobs:
         if: inputs.cli_archive && inputs.platform == 'mac'
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
         with:
+          retention-days: 7
+        with:
           name: cli-${{ inputs.platform }}-${{ inputs.arch }}
           path: release-cli/*
           if-no-files-found: error
@@ -732,6 +736,8 @@ jobs:
       - name: Upload launch check output
         if: failure() && inputs.launch_check
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
+        with:
+          retention-days: 7
         with:
           name: desktop-launch-check-${{ inputs.platform }}-${{ inputs.arch }}
           path: ${{ runner.temp }}/desktop-launch-check
@@ -828,6 +834,8 @@ jobs:
       - name: Upload build artifacts
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
         with:
+          retention-days: 7
+        with:
           name: desktop-${{ inputs.platform }}-${{ inputs.arch }}
           path: release-publish/*
           if-no-files-found: error
@@ -836,6 +844,8 @@ jobs:
 
       - name: Upload resource monitor
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
+        with:
+          retention-days: 7
         with:
           name: resource-monitor-${{ inputs.resource_key }}
           path: resource-monitor-publish/${{ inputs.resource_key }}/*
