@@ -209,6 +209,8 @@ jobs:
         if: ${{ failure() && steps.desktop_launch.outcome == 'failure' }}
         uses: actions/upload-artifact@v7
         with:
+          retention-days: 1
+        with:
           name: desktop-launch-check
           path: ${{ runner.temp }}/desktop-launch-check
           if-no-files-found: ignore
@@ -482,6 +484,8 @@ jobs:
       - name: Upload test cache measurements
         if: always() && steps.changes.outputs.test_server != 'false'
         uses: actions/upload-artifact@v7
+        with:
+          retention-days: 1
         with:
           name: test-cache-${{ matrix.shard }}
           path: ${{ runner.temp }}/test-cache-${{ matrix.shard }}.json
